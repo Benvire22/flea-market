@@ -4,14 +4,18 @@ import Grid from '@mui/material/Grid2';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { selectLoginError } from './usersSlice';
+import { selectLoginError, selectLoginLoading } from './usersSlice';
 import { LoginMutation } from '../../types';
 import { login } from './usersThunks';
+import { LoadingButton } from '@mui/lab';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const error = useAppSelector(selectLoginError);
   const navigate = useNavigate();
+  const loginLoading = useAppSelector(selectLoginLoading);
+
   const [state, setState] = useState<LoginMutation>({
     username: '',
     password: '',
@@ -79,16 +83,18 @@ const Login = () => {
             />
           </Grid>
         </Grid>
-        <Button
-          type="submit"
+        <LoadingButton
+          type='submit'
           fullWidth
-          variant="contained"
           sx={{ mt: 3, mb: 2 }}
-          color="primary"
-          onClick={submitFormHandler}
+          color='primary'
+          loading={loginLoading}
+          loadingPosition='end'
+          endIcon={<ExitToAppIcon />}
+          variant='contained'
         >
-          Sign in
-        </Button>
+          <span>Sign up</span>
+        </LoadingButton>
         <Link component={RouterLink} to={'/register'} variant="body2">
           Or sign up
         </Link>

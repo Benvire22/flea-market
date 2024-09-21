@@ -5,6 +5,7 @@ import { User } from '../../types';
 import { NavLink } from 'react-router-dom';
 import {useAppDispatch} from "../../app/hooks";
 import {logout} from "../../features/users/usersThunks";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 interface Props {
   user: User;
@@ -30,10 +31,10 @@ const UserMenu: React.FC<Props> = ({ user }) => {
       </Button>
       <Menu open={isOpen} onClose={handleClose} anchorEl={anchorEl} keepMounted>
         <MenuItem onClick={handleClose} component={NavLink} to="/add-new">
-          Create new product
+          Add new product
         </MenuItem>
         <MenuItem>My account</MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}><LogoutIcon/> Logout</MenuItem>
       </Menu>
     </Grid>
   );

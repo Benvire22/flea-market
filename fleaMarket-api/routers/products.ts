@@ -45,7 +45,11 @@ productsReducer.post('/', imagesUpload.single('image'), auth, async (req: Reques
     }
 
     if (!req.file) {
-      return res.status(404).send({ error: 'All fields required!' });
+      return res.status(400).send({ error: 'All fields required!' });
+    }
+
+    if (parseFloat(req.body.price) < 1) {
+      return res.status(400).send({ error: 'Price is required!' });
     }
 
     const ProductMutation: ProductMutation = {

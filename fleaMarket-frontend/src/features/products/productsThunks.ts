@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Product, ProductMutation } from '../../types';
+import { GlobalError, Product, ProductMutation } from '../../types';
 import axiosApi from '../../axiosApi';
 import { RootState } from '../../app/store';
+import { isAxiosError } from 'axios';
 
 
 export const fetchProducts = createAsyncThunk<Product[], string>(
@@ -38,9 +39,9 @@ export const fetchOneProduct = createAsyncThunk<Product | null, string>(
   },
 );
 
-export const createProduct = createAsyncThunk<void, ProductMutation, { state: RootState }>(
+export const createProduct = createAsyncThunk<void, ProductMutation, { state: RootState, rejectValue: GlobalError }>(
   'products/create',
-  async (productMutation, { getState }) => {
+  async (productMutation, { getState, rejectWithValue }) => {
     try {
       const formData = new FormData();
       const token = getState().users.user?.token;
@@ -53,7 +54,11 @@ export const createProduct = createAsyncThunk<void, ProductMutation, { state: Ro
 
       await axiosApi.post(`/products`, formData, { headers: { 'Authorization': `Bearer ${token}` } });
     } catch (e) {
-      console.error(e);
+      if (isAxiosError(e) && e.response && e.response.status === 400) {
+        return rejectWithValue(e.response.data);
+      }
+
+      throw e;
     }
   },
 );
@@ -63,7 +68,7 @@ export const deleteProduct = createAsyncThunk<void, string, { state: RootState }
   async (productId, { getState }) => {
     try {
       const token = getState().users.user?.token;
-      await axiosApi.post(`/products/${productId}`, { headers: { 'Authorization': `Bearer ${token}` } });
+      await axiosApi.delete(`/products/${productId}`, { headers: { 'Authorization': `Bearer ${token}` } });
     } catch (e) {
       console.error(e);
     }

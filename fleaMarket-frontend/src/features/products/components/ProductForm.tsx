@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MenuItem, TextField } from '@mui/material';
+import { Alert, MenuItem, TextField } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { LoadingButton } from '@mui/lab';
 import SaveIcon from '@mui/icons-material/Save';
@@ -27,6 +27,7 @@ const PostForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
 
   const submitFormHandler = (event: React.FormEvent) => {
     event.preventDefault();
+
     onSubmit({ ...state });
   };
 
@@ -48,28 +49,14 @@ const PostForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
     }));
   };
 
+  console.log(error);
   return (
     <Grid container direction='column' spacing={2} component='form' onSubmit={submitFormHandler}>
-      <Grid>
-          <TextField
-            required
-            select
-            label="Category"
-            id="category"
-            name="category"
-            value={state.category}
-            onChange={inputChangeHandler}
-          >
-            <MenuItem value="" disabled>
-              Select category
-            </MenuItem>
-            {categories.map((category) => (
-              <MenuItem key={category + new Date()} value={category}>
-                {category}
-              </MenuItem>
-            ))}
-          </TextField>
-      </Grid>
+      {error && (
+        <Alert severity="error" sx={{ mt: 3 }}>
+          {error.error}
+        </Alert>
+      )}
       <Grid>
         <TextField
           required
@@ -95,6 +82,8 @@ const PostForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
       <Grid>
         <TextField
           required
+          type="number"
+          min="0"
           label='Price'
           id='price'
           name='price'
@@ -103,8 +92,27 @@ const PostForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
         />
       </Grid>
       <Grid>
-        <FileInput
+        <TextField
           required
+          select
+          label="Category"
+          id="category"
+          name="category"
+          value={state.category}
+          onChange={inputChangeHandler}
+        >
+          <MenuItem value="" disabled>
+            Select category
+          </MenuItem>
+          {categories.map((category) => (
+            <MenuItem key={category + new Date()} value={category}>
+              {category}
+            </MenuItem>
+          ))}
+        </TextField>
+      </Grid>
+      <Grid>
+        <FileInput
           label='Image'
           name='image'
           onChange={fileInputChangeHandler}

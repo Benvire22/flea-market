@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Button, Grid, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 
 interface Props {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -31,10 +32,10 @@ const FileInput: React.FC<Props> = ({ onChange, name, label }) => {
     <>
       <input type="file" name={name} style={{ display: 'none' }} ref={inputRef} onChange={onFileChange} />
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs>
+        <Grid size={10}>
           <TextField label={label} InputProps={{ readOnly: true }} value={filename} onClick={activateInput} />
         </Grid>
-        <Grid item>
+        <Grid size={1}>
           <Button variant="outlined" onClick={activateInput}>
             Browse
           </Button>

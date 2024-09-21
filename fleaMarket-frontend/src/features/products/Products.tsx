@@ -58,10 +58,10 @@ const Products = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid sx={{ width: 200 }}>
+      <Grid size={2}>
         <CategoriesMenu categories={categories} />
       </Grid>
-      <Grid container direction='column' spacing={2}>
+      <Grid size={10} container direction='column' spacing={2}>
         <Grid container justifyContent='space-between' alignItems='center'>
           <Grid>
             <Typography variant='h4'>{pageTitle}</Typography>
