@@ -29,7 +29,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await dispatch(login(state)).unwrap();
-      navigate('/');
+      navigate(-1);
     } catch (e) {
       console.error(e);
     }

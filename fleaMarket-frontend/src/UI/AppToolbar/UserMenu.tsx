@@ -25,11 +25,11 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 
   return (
     <Grid>
-      <Button color="inherit" onClick={handleClick}>
+      <Button color="inherit" sx={{fontSize: 20}} onClick={handleClick}>
         {user.username}
       </Button>
       <Menu open={isOpen} onClose={handleClose} anchorEl={anchorEl} keepMounted>
-        <MenuItem onClick={handleClose} component={NavLink} to="/posts/add-new">
+        <MenuItem onClick={handleClose} component={NavLink} to="/add-new">
           Create new product
         </MenuItem>
         <MenuItem>My account</MenuItem>

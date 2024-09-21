@@ -11,7 +11,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 const ImageCardMedia = styled(CardMedia)({
   height: '400px',
-  width: '300px',
+  width: '350px',
 });
 
 const OneProduct = () => {
@@ -50,13 +50,13 @@ const OneProduct = () => {
           </Grid>
         </Grid>
         <Grid fontWeight='bold' color='indigo' component={Typography} variant='h6'>
-          {product.price} KGS
+          Price: {product.price} KGS
         </Grid>
         <Grid container spacing={2}>
           <Grid size={3}>
             <ImageCardMedia image={`${API_URL}/${product.image}`} title={product.title} />
           </Grid>
-          <Grid size={9} component={Typography} variant='body1'>{product.description}</Grid>
+          <Grid size={9} component={Typography}>{product.description}</Grid>
         </Grid>
         <Grid severity='info' icon={<LocalPhoneIcon />} component={Alert} sx={{ fontSize: 22 }} alignItems='center'>
           <span>Phone {product.user.phoneNumber}</span>

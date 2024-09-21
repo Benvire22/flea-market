@@ -16,7 +16,7 @@ export interface Product {
 export interface ProductMutation {
   title: string;
   description: string;
-  image: string;
+  image: File |string;
   price: string;
   category: string;
 }

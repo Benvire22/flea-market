@@ -22,7 +22,7 @@ const AppToolbar = () => {
       <Toolbar>
         <Grid sx={{ mx: 'auto' }} container size={10} justifyContent="space-between" alignItems="center" maxWidth="xl">
           <Grid>
-            <Typography variant="h6" component="div">
+            <Typography variant="h5" component="div">
               <StyledLink to="/">Flea Market</StyledLink>
             </Typography>
           </Grid>
