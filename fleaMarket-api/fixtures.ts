@@ -10,6 +10,7 @@ const run = async () => {
   try {
     await db.dropDatabase();
     await db.dropCollection('users');
+    await db.dropCollection('products');
   } catch (e) {
     console.log('Skipping drop...');
   }

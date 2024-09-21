@@ -11,8 +11,8 @@ const ProductSchema = new Schema<ProductMutation>({
     required: true,
     validate: {
       validator: async (value: Types.ObjectId) => {
-        const category = await User.findById(value);
-        return Boolean(category);
+        const user = await User.findById(value);
+        return Boolean(user);
       },
       message: 'User not found!',
     },
