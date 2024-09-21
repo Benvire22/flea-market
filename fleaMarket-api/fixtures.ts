@@ -37,32 +37,32 @@ const run = async () => {
 
   await Post.create({
     user: user1,
-    title: 'Экспертная экспертность',
-    description: 'Вы знали об этом?',
-    image: 'fixtures/product1-mem.jpg',
-    price: 2030,
+    title: 'Монитор HP 27m 27", черный 3wl48aa',
+    description: 'Хороший моник',
+    image: 'monitor.jpg',
+    price: 5030,
     category: 'Computers',
   }, {
     user: user1,
-    title: 'КОТИКИ',
-    description: 'Милоты вам в ленту',
-    image: 'fixtures/product2-cat.jpg',
+    title: 'Клавиатура Oklick 180m черный PS/2',
+    description: 'Хорошая клава',
+    image: 'fixtures/klaviatur.jpg',
     price: 2300,
+    category: 'Computers',
+  }, {
+    user: user2,
+    title: 'Intel Core i7',
+    description: 'Отличная CPU (нет)',
+    image: 'fixtures/cpu.png',
+    price: 5700,
     category: 'Cors',
   }, {
     user: user2,
-    title: 'Время поговорить о важном',
-    description: 'А здесь армяне в нарды играют',
-    image: 'fixtures/product2-cat.jpg',
-    price: 5500,
-    category: 'Other',
-  }, {
-    user: user2,
-    title: 'Камни',
-    description: 'Камни',
-    image: 'fixtures/product4-rock.jpg',
+    title: 'Цветок алоэ',
+    description: 'Или не алоэ',
+    image: 'fixtures/Flower.jpg',
     price: 400,
-    category: 'Computers',
+    category: 'Other',
   });
 
   await db.close();
