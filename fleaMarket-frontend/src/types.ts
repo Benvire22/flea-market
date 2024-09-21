@@ -1,43 +1,27 @@
 
-export interface Artist {
+export interface Product {
   _id: string;
-  name: string;
-  photo: string | null;
+  user: string;
+  title: string;
   description: string;
+  image: string;
+  price: number;
+  category: string;
 }
 
-export interface Album {
-  _id: string;
-  artist: {
-    _id: string;
-    name: string;
-  };
-  name: string;
-  releaseDate: number;
-  image: string | null;
-}
-
-export interface Track {
-  _id: string;
-  album: string;
-  name: string;
-  length: string;
-  number: number;
-}
-
-export interface TrackHistory {
-  _id: string;
-  track: Track;
-  artist: {
-    _id: string;
-    name: string;
-  }
-  datetime: Date;
+export interface ProductMutation {
+  title: string;
+  description: string;
+  image: string;
+  price: string;
+  category: string;
 }
 
 export interface RegisterMutation {
   username: string;
   password: string;
+  displayName: string;
+  phoneNumber: string;
 }
 
 export interface LoginMutation {
