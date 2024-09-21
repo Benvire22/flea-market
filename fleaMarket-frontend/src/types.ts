@@ -1,7 +1,11 @@
 
 export interface Product {
   _id: string;
-  user: string;
+  user: {
+    _id: string;
+    displayName: string;
+    phoneNumber: string;
+  };
   title: string;
   description: string;
   image: string;

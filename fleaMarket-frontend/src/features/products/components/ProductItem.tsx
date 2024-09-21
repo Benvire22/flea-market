@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, styled } from '@mui/material';
+import { Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, styled, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { API_URL } from '../../../constants';
@@ -28,11 +28,13 @@ const ProductItem: React.FC<Props> = ({ id, title, price, image, category }) => 
   return (
     <Grid sx={{ width: '300px' }}>
       <Card sx={{ height: '100%' }}>
-        <CardHeader title={title} />
         <ImageCardMedia image={cardImage} title={title} />
         <CardContent>
-          <p>Category: {category}</p>
-          <strong>Price: {price} KGS</strong>
+          <Typography gutterBottom variant="h6">
+            {title}
+          </Typography>
+          <Typography variant="h6" marginBottom="20px">Category: {category}</Typography>
+          <Typography variant="h5" color="primary">Price: {price} KGS</Typography>
         </CardContent>
         <CardActions>
           <IconButton component={Link} to={`/products/${id}`}>

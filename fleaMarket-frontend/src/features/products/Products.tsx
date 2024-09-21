@@ -66,13 +66,8 @@ const Products = () => {
           <Grid>
             <Typography variant='h4'>{pageTitle}</Typography>
           </Grid>
-          <Grid>
-            <Button color='primary' component={Link} to='/add-new'>
-              Add product
-            </Button>
-          </Grid>
         </Grid>
-        <Grid container spacing={1}>
+        <Grid container size={12} spacing={1}>
           {content}
         </Grid>
       </Grid>
