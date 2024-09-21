@@ -9,15 +9,13 @@ const run = async () => {
 
   try {
     await db.dropDatabase();
-    // await db.dropCollection('users');
-    // await db.dropCollection('products');
   } catch (e) {
     console.log('Skipping drop...');
   }
 
   const user1 = new User({
     username: 'ANITAR',
-    password: '1qaz@fewfWSX',
+    password: '123',
     displayName: 'Иван',
     phoneNumber: '999-333-333'
   });
@@ -27,9 +25,9 @@ const run = async () => {
 
   const user2 = new User({
     username: 'Protomax',
-    password: '1qaz@WSX',
+    password: '321',
     displayName: 'Сергей',
-    phoneNumber: '999-333-333'
+    phoneNumber: '444-666-333'
   });
 
   user2.generateToken();
@@ -39,7 +37,7 @@ const run = async () => {
     user: user1,
     title: 'Монитор HP 27m 27", черный 3wl48aa',
     description: 'Хороший моник',
-    image: 'monitor.jpg',
+    image: 'fixtures/monitor.jpg',
     price: 5030,
     category: 'Computers',
   }, {
