@@ -5,7 +5,6 @@ import { ProductMutation } from '../types';
 import mongoose from 'mongoose';
 import auth, { RequestWithUser } from '../middleware/auth';
 
-
 const productsReducer = express.Router();
 
 productsReducer.get('/', async (req, res, next) => {
@@ -44,12 +43,12 @@ productsReducer.post('/', imagesUpload.single('image'), auth, async (req: Reques
       return res.status(401).send({ error: 'User not found!' });
     }
 
-    if (!req.file) {
+    if (!req.file || !req.body.title || !req.body.description || !req.body.category || !req.body.price) {
       return res.status(400).send({ error: 'All fields required!' });
     }
 
     if (parseFloat(req.body.price) < 1) {
-      return res.status(400).send({ error: 'Price is required!' });
+      return res.status(400).send({ error: 'The price must be positive!' });
     }
 
     const ProductMutation: ProductMutation = {
@@ -86,7 +85,7 @@ productsReducer.delete('/:id', auth, async (req: RequestWithUser, res, next) => 
     });
 
     if (!deletedProduct) {
-      return res.status(404).send({ error: 'Product do not be deleted!' });
+      return res.status(403).send({ error: 'The product has not been deleted!' });
     }
 
     return res.send({ response: 'Product was deleted!' });

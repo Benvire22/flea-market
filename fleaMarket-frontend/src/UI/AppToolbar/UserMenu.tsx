@@ -3,8 +3,8 @@ import Grid from '@mui/material/Grid2';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { User } from '../../types';
 import { NavLink } from 'react-router-dom';
-import {useAppDispatch} from "../../app/hooks";
-import {logout} from "../../features/users/usersThunks";
+import { useAppDispatch } from '../../app/hooks';
+import { logout } from '../../features/users/usersThunks';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 interface Props {
@@ -26,15 +26,15 @@ const UserMenu: React.FC<Props> = ({ user }) => {
 
   return (
     <Grid>
-      <Button color="inherit" sx={{fontSize: 20}} onClick={handleClick}>
+      <Button color='inherit' sx={{ fontSize: 20 }} onClick={handleClick}>
         {user.username}
       </Button>
       <Menu open={isOpen} onClose={handleClose} anchorEl={anchorEl} keepMounted>
-        <MenuItem onClick={handleClose} component={NavLink} to="/add-new">
+        <MenuItem onClick={handleClose} component={NavLink} to='/add-new'>
           Add new product
         </MenuItem>
         <MenuItem>My account</MenuItem>
-        <MenuItem onClick={handleLogout}><LogoutIcon/> Logout</MenuItem>
+        <MenuItem onClick={handleLogout}><LogoutIcon /> Logout</MenuItem>
       </Menu>
     </Grid>
   );

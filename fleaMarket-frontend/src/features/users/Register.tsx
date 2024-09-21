@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Box, Button, TextField, Typography, Link } from '@mui/material';
+import { Avatar, Box, TextField, Typography, Link } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -88,8 +88,8 @@ const Register = () => {
               value={state.displayName}
               onChange={inputChangeHandler}
               required
-              // error={Boolean(getFieldError('password'))}
-              // helperText={getFieldError('password')}
+              error={Boolean(getFieldError('displayName'))}
+              helperText={getFieldError('displayName')}
             />
           </Grid>
           <Grid>
@@ -100,8 +100,8 @@ const Register = () => {
               value={state.phoneNumber}
               onChange={inputChangeHandler}
               required
-              // error={Boolean(getFieldError('password'))}
-              // helperText={getFieldError('password')}
+              error={Boolean(getFieldError('phoneNumber'))}
+              helperText={getFieldError('phoneNumber')}
             />
           </Grid>
           <Grid>

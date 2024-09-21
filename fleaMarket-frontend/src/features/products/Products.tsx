@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { selectCategories, selectProducts, selectProductsLoading } from './productsSlice';
-import { Link, useParams } from 'react-router-dom';
-import { Alert, Button, CircularProgress, Typography } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { Alert, CircularProgress, Typography } from '@mui/material';
 import ProductItem from './components/ProductItem';
 import Grid from '@mui/material/Grid2';
 import CategoriesMenu from './components/CategoriesMenu';
@@ -30,18 +30,25 @@ const Products = () => {
   );
 
   if (isFetching) {
-    content = <CircularProgress />;
+    content = (
+      <Grid container direction='column' alignItems='center' spacing={2}>
+        <CircularProgress />
+      </Grid>
+    );
   } else if (products?.length > 0) {
-    content = products.map((product) => (
-      <ProductItem
-        key={product._id}
-        id={product._id}
-        title={product.title}
-        price={product.price}
-        image={product.image}
-        category={product.category}
-      />
-    ));
+    content = (
+      <Grid container size={12} spacing={1}>
+        {products.map((product) => (
+          <ProductItem
+            key={product._id}
+            id={product._id}
+            title={product.title}
+            price={product.price}
+            image={product.image}
+          />
+        ))}
+      </Grid>
+    );
   }
 
   const pageTitle = useMemo(() => {
@@ -67,9 +74,7 @@ const Products = () => {
             <Typography variant='h4'>{pageTitle}</Typography>
           </Grid>
         </Grid>
-        <Grid container size={12} spacing={1}>
-          {content}
-        </Grid>
+        {content}
       </Grid>
     </Grid>
   );

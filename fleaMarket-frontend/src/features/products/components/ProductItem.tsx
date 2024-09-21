@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, styled, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, IconButton, styled, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { API_URL } from '../../../constants';
@@ -15,10 +15,9 @@ interface Props {
   title: string;
   price: number;
   image: string;
-  category: string;
 }
 
-const ProductItem: React.FC<Props> = ({ id, title, price, image, category }) => {
+const ProductItem: React.FC<Props> = ({ id, title, price, image }) => {
   let cardImage = '';
 
   if (image) {
@@ -33,7 +32,6 @@ const ProductItem: React.FC<Props> = ({ id, title, price, image, category }) => 
           <Typography gutterBottom variant="h6">
             {title}
           </Typography>
-          <Typography variant="h6" marginBottom="20px">Category: {category}</Typography>
           <Typography variant="h5" color="primary">Price: {price} KGS</Typography>
         </CardContent>
         <CardActions>

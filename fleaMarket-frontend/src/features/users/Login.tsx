@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Avatar, Box, Button, TextField, Typography, Link, Alert } from '@mui/material';
+import { Avatar, Box, TextField, Typography, Link, Alert } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -51,33 +51,33 @@ const Login = () => {
       <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
         <LockOpenIcon />
       </Avatar>
-      <Typography component="h1" variant="h5">
+      <Typography component='h1' variant='h5'>
         Sign in
       </Typography>
       {error && (
-        <Alert severity="error" sx={{ mt: 3 }}>
+        <Alert severity='error' sx={{ mt: 3 }}>
           {error.error}
         </Alert>
       )}
-      <Box component="form" noValidate onSubmit={submitFormHandler} sx={{ mt: 3 }}>
-        <Grid container direction="column" spacing={2}>
+      <Box component='form' noValidate onSubmit={submitFormHandler} sx={{ mt: 3 }}>
+        <Grid container direction='column' spacing={2}>
           <Grid>
             <TextField
-              label="Username"
-              name="username"
+              label='Username'
+              name='username'
               value={state.username}
-              autoComplete="current-username"
+              autoComplete='current-username'
               onChange={inputChangeHandler}
               required
             />
           </Grid>
           <Grid>
             <TextField
-              type="password"
-              label="Password"
-              name="password"
+              type='password'
+              label='Password'
+              name='password'
               value={state.password}
-              autoComplete="current-password"
+              autoComplete='current-password'
               onChange={inputChangeHandler}
               required
             />
@@ -93,9 +93,9 @@ const Login = () => {
           endIcon={<ExitToAppIcon />}
           variant='contained'
         >
-          <span>Sign up</span>
+          <span>Sign in</span>
         </LoadingButton>
-        <Link component={RouterLink} to={'/register'} variant="body2">
+        <Link component={RouterLink} to={'/register'} variant='body2'>
           Or sign up
         </Link>
       </Box>

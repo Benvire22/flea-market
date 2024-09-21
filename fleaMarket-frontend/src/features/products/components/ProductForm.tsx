@@ -49,7 +49,6 @@ const PostForm: React.FC<Props> = ({ onSubmit, isLoading }) => {
     }));
   };
 
-  console.log(error);
   return (
     <Grid container direction='column' spacing={2} component='form' onSubmit={submitFormHandler}>
       {error && (

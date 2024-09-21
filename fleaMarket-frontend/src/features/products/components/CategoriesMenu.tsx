@@ -11,15 +11,15 @@ const CategoriesMenu: React.FC<Props> = ({ categories }) => {
   const { categoryId } = useParams();
 
   return (
-    <Grid container direction="column" spacing={2}>
+    <Grid container direction='column' spacing={2}>
       <Grid>
-        <Typography variant="h6">Categories</Typography>
+        <Typography variant='h6'>Categories</Typography>
       </Grid>
       <Grid>
         <List>
           <ListItem disablePadding>
-            <ListItemButton component={Link} to="/" selected={!categoryId}>
-              <ListItemText primary="All products" />
+            <ListItemButton component={Link} to='/' selected={!categoryId}>
+              <ListItemText primary='All products' />
             </ListItemButton>
           </ListItem>
           {categories.map((category) => (

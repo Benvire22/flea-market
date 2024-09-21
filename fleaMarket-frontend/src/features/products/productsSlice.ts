@@ -33,11 +33,7 @@ const initialState: ProductState = {
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {
-    unsetUser: (state) => {
-      state.user = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.errorLoadingProducts = false;
@@ -108,5 +104,4 @@ export const {
   selectCreatingProduct,
   selectErrorCreatingOneProduct,
   selectDeleteLoadingProduct,
-  selectErrorDeletingProduct,
 } = productsSlice.selectors;

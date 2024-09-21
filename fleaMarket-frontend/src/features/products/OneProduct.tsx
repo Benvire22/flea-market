@@ -50,7 +50,11 @@ const OneProduct = () => {
   };
 
   if (isFetching) {
-    content = <CircularProgress />;
+    content = (
+      <Grid container direction='column' alignItems='center' spacing={2}>
+        <CircularProgress />
+      </Grid>
+    );
   } else if (product) {
     content = (
       <>
@@ -63,32 +67,17 @@ const OneProduct = () => {
               Trader: {product.user.displayName}
             </Typography>
           </Grid>
-          {user && user._id === product.user._id ? (
-            <Grid>
-              <LoadingButton
-                type='button'
-                fullWidth
-                sx={{ mt: 3, mb: 2 }}
-                color='error'
-                loading={isDeleting}
-                loadingPosition='end'
-                endIcon={<DeleteForeverIcon />}
-                variant='contained'
-                onClick={handleDeleteProduct}
-              >
-                <span>Sign up</span>
-              </LoadingButton>
-            </Grid>
-          ) : null}
         </Grid>
         <Grid fontWeight='bold' color='indigo' component={Typography} variant='h6'>
           Price: {product.price} KGS
         </Grid>
-        <Grid container spacing={2}>
+        <Grid sx={{ borderTop: '2px solid lightblue', borderBottom: '1px solid #ccc' }} padding='20px' container
+              spacing={2}>
           <Grid size={4}>
             <ImageCardMedia image={`${API_URL}/${product.image}`} title={product.title} />
           </Grid>
-          <Grid size={8} component={Typography}>{product.description}</Grid>
+          <Grid sx={{ border: '2px solid #42a5f5' }} padding='20px' size={8}
+                component={Typography}>{product.description}</Grid>
         </Grid>
         <Grid severity='info' icon={<LocalPhoneIcon />} component={Alert} sx={{ fontSize: 22 }} alignItems='center'>
           <span>Phone {product.user.phoneNumber}</span>
@@ -99,10 +88,26 @@ const OneProduct = () => {
 
   return (
     <Grid container direction='column' spacing={2}>
-      <Grid>
+      <Grid container justifyContent='space-between'>
         <Button variant='text' startIcon={<ArrowBackIcon />} component={Link} to='/'>
           Back to products
         </Button>
+        {
+          user && product && user._id === product.user._id ? (
+            <LoadingButton
+              type='button'
+              sx={{ mt: 3, mb: 2 }}
+              color='error'
+              loading={isDeleting}
+              loadingPosition='end'
+              endIcon={<DeleteForeverIcon />}
+              variant='contained'
+              onClick={handleDeleteProduct}
+            >
+              <span>Delete</span>
+            </LoadingButton>
+          ) : null
+        }
       </Grid>
       {content}
     </Grid>

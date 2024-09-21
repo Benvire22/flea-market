@@ -18,12 +18,12 @@ const AppToolbar = () => {
   const user = useAppSelector(selectUser);
 
   return (
-    <AppBar position="sticky" sx={{ mb: 2 }}>
+    <AppBar position='sticky' sx={{ mb: 2 }}>
       <Toolbar>
-        <Grid sx={{ mx: 'auto' }} container size={10} justifyContent="space-between" alignItems="center" maxWidth="xl">
+        <Grid sx={{ mx: 'auto' }} container size={10} justifyContent='space-between' alignItems='center' maxWidth='xl'>
           <Grid>
-            <Typography variant="h5" component="div">
-              <StyledLink to="/">Flea Market</StyledLink>
+            <Typography variant='h5' component='div'>
+              <StyledLink to='/'>Flea Market</StyledLink>
             </Typography>
           </Grid>
           {user ? <UserMenu user={user} /> : <AnonymousMenu />}
