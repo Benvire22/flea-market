@@ -4,11 +4,11 @@ import axiosApi from '../../axiosApi';
 import { RootState } from '../../app/store';
 
 
-export const fetchProducts = createAsyncThunk<Product[], void>(
-  'products/fetch',
-  async () => {
+export const fetchProducts = createAsyncThunk<Product[], string>(
+  'products/fetchAll',
+  async (categoryId) => {
     try {
-      const { data: products } = await axiosApi.get<Product[]>('/products');
+      const { data: products } = await axiosApi.get<Product[]>('/products', { params: { category: categoryId } });
 
       if (!products) {
         return [];
@@ -39,7 +39,7 @@ export const fetchOneProduct = createAsyncThunk<Product | null, string>(
 );
 
 export const createProduct = createAsyncThunk<void, ProductMutation, { state: RootState }>(
-  'products/fetchOne',
+  'products/create',
   async (productMutation, { getState }) => {
     try {
       const formData = new FormData();
@@ -62,9 +62,7 @@ export const deleteProduct = createAsyncThunk<void, string, { state: RootState }
   'products/delete',
   async (productId, { getState }) => {
     try {
-      const formData = new FormData();
       const token = getState().users.user?.token;
-
       await axiosApi.post(`/products/${productId}`, { headers: { 'Authorization': `Bearer ${token}` } });
     } catch (e) {
       console.error(e);

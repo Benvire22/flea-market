@@ -4,6 +4,7 @@ import { createProduct, deleteProduct, fetchOneProduct, fetchProducts } from './
 
 export interface ProductState {
   products: Product[];
+  categories: string[];
   loadingProducts: boolean;
   errorLoadingProducts: boolean;
   oneProduct: Product | null;
@@ -17,6 +18,7 @@ export interface ProductState {
 
 const initialState: ProductState = {
   products: [],
+  categories: ['Computers', 'Cors', 'Other'],
   loadingProducts: false,
   errorLoadingProducts: false,
   oneProduct: null,
@@ -81,8 +83,9 @@ export const productsSlice = createSlice({
     });
   },
   selectors: {
-    selectProduct: (state) => state.products,
-    selectProductLoading: (state) => state.loadingProducts,
+    selectProducts: (state) => state.products,
+    selectCategories: (state) => state.categories,
+    selectProductsLoading: (state) => state.loadingProducts,
     selectErrorLoadingProduct: (state) => state.errorLoadingOneProduct,
     selectOneProduct: (state) => state.oneProduct,
     selectOneProductLoading: (state) => state.loadingOneProduct,
@@ -97,8 +100,9 @@ export const productsSlice = createSlice({
 export const productsReducer = productsSlice.reducer;
 
 export const {
-  selectProduct,
-  selectProductLoading,
+  selectProducts,
+  selectCategories,
+  selectProductsLoading,
   selectOneProduct,
   selectOneProductLoading,
   selectCreatingProduct,

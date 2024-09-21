@@ -5,7 +5,7 @@ import { persistReducer, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, pers
 import { productsReducer } from '../features/products/productsSlice';
 
 const usersPersistConfig = {
-  key: 'music-app:users',
+  key: 'flea-market:users',
   storage,
   whitelist: ['user'],
 };

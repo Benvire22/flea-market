@@ -9,8 +9,8 @@ const run = async () => {
 
   try {
     await db.dropDatabase();
-    await db.dropCollection('users');
-    await db.dropCollection('products');
+    // await db.dropCollection('users');
+    // await db.dropCollection('products');
   } catch (e) {
     console.log('Skipping drop...');
   }
@@ -18,6 +18,8 @@ const run = async () => {
   const user1 = new User({
     username: 'ANITAR',
     password: '1qaz@fewfWSX',
+    displayName: 'Иван',
+    phoneNumber: '999-333-333'
   });
 
   user1.generateToken();
@@ -26,6 +28,8 @@ const run = async () => {
   const user2 = new User({
     username: 'Protomax',
     password: '1qaz@WSX',
+    displayName: 'Сергей',
+    phoneNumber: '999-333-333'
   });
 
   user2.generateToken();
@@ -35,28 +39,28 @@ const run = async () => {
     user: user1,
     title: 'Экспертная экспертность',
     description: 'Вы знали об этом?',
-    image: 'fixtures/post1-mem.jpg',
+    image: 'fixtures/product1-mem.jpg',
     price: 2030,
     category: 'Computers',
   }, {
     user: user1,
     title: 'КОТИКИ',
     description: 'Милоты вам в ленту',
-    image: 'fixtures/post2-cat.jpg',
+    image: 'fixtures/product2-cat.jpg',
     price: 2300,
     category: 'Cors',
   }, {
     user: user2,
     title: 'Время поговорить о важном',
     description: 'А здесь армяне в нарды играют',
-    image: 'fixtures/post2-cat.jpg',
+    image: 'fixtures/product2-cat.jpg',
     price: 5500,
     category: 'Other',
   }, {
     user: user2,
     title: 'Камни',
     description: 'Камни',
-    image: 'fixtures/post4-rock.jpg',
+    image: 'fixtures/product4-rock.jpg',
     price: 400,
     category: 'Computers',
   });
